@@ -1,0 +1,7 @@
+{
+	"extends": ["./node_modules/@nihalgonsalves/esconfig/.eslintrc"],
+	"rules": {
+		"@typescript-eslint/consistent-type-assertions": "off",
+		"func-style": "off"
+	}
+}
