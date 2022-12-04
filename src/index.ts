@@ -35,23 +35,13 @@ export async function getEncryptionKey() {
 }
 
 export function getSettings() {
-	try {
-		const appdata = process.env['APPDATA'];
-		if (!appdata) throw new Error('APPDATA missing from environment!');
+	const appdata = process.env['APPDATA'];
+	if (!appdata) throw new Error('APPDATA missing from environment!');
 
-		const path = join(
-			appdata,
-			'Battlestate Games',
-			'BsgLauncher',
-			'settings',
-		);
+	const path = join(appdata, 'Battlestate Games', 'BsgLauncher', 'settings');
 
-		const content = readFileSync(path, 'utf8');
-		return JSON.parse(content) as BsgSettings;
-	} catch (e) {
-		console.error('Failed to get settings file:', e);
-		process.exit(1);
-	}
+	const content = readFileSync(path, 'utf8');
+	return JSON.parse(content) as BsgSettings;
 }
 
 function decrypt(ciphertext: string, key: Buffer) {
